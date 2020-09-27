@@ -1,21 +1,21 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+import React, {useState} from 'react';
+import {View, Button, StyleSheet} from 'react-native';
+import Timer from './components/Timer';
+const App = () => {
+  const [start, getStart] = useState(false);
+  const label = !start ? "Start" : "Pause";
+  return(
+    <View style={styles.main}>
+      <Button title={label} onPress={() => {getStart(!start)}}/>
+      <Timer start={start}/>
     </View>
   );
 }
-
 const styles = StyleSheet.create({
-  container: {
+  main: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+    marginTop: 100,
+    marginHorizontal: 80,
+  }
+})
+export default App;
